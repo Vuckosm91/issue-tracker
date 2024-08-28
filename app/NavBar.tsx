@@ -1,4 +1,5 @@
 "use client";
+import { Skeleton } from "@/app/components";
 import classNames from "classnames";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -13,6 +14,7 @@ import {
   Flex,
   Text,
 } from "@radix-ui/themes";
+import { Noto_Kufi_Arabic } from "next/font/google";
 
 const NavBar = () => {
   return (
@@ -62,7 +64,7 @@ const NavLinks = () => {
 const AuthStatus = () => {
   const { status, data: session } = useSession();
 
-  if (status === "loading") return null;
+  if (status === "loading") return <Skeleton width="3rem" />;
 
   if (status === "unauthenticated")
     return (
